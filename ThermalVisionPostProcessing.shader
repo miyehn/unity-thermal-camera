@@ -43,6 +43,10 @@
 			}
 
 			sampler2D _MainTex;
+			int useTexture; // 0: don't use texture; otherwise means texture index (1 or 2)
+
+			sampler2D _PaletteTex;
+
 			float3 coolColor;
 			float3 midColor;
 			float3 warmColor;
@@ -51,11 +55,19 @@
 			{
 				float4 src = tex2D(_MainTex, i.uv);
 				float lum = Luminance(src);
-				float ix = step(0.5f, lum);
-				float3 range1 = lerp(coolColor, midColor, (lum - ix*0.5f) * 2);
-				float3 range2 = lerp(midColor, warmColor, (lum - ix*0.5f) * 2);
 
-				return float4(lerp(range1, range2, ix), 1);
+				float4 res = 0;
+				if (useTexture) {
+					res = tex2D(_PaletteTex, float2(lum, 0.25 + (useTexture-1) * 0.5));
+
+				} else {
+					float ix = step(0.5f, lum);
+					float3 range1 = lerp(coolColor, midColor, (lum - ix*0.5f) * 2);
+					float3 range2 = lerp(midColor, warmColor, (lum - ix*0.5f) * 2);
+					res = float4(lerp(range1, range2, ix), 1);
+				}
+
+				return res;
 			}
 			ENDCG
 		}
