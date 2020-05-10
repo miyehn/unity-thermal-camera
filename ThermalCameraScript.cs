@@ -7,10 +7,15 @@ using UnityEngine.Assertions;
 public class ThermalCameraScript : MonoBehaviour {
 
 	[Header("Resource References")]
+
+	[Tooltip("ThermalVisionPostProcessing.shader")]
 	public Shader TVPostProcessing;
+	[Tooltip("ThermalVisionSurfaceReplacement.shader")]
 	public Shader TVSurfaceReplacement; // cool replacement material
 
 	[Header("Palette")]
+
+	[Tooltip("0 - don't use texture (use 3 colors instead, as specified below)\n1 - use texture palette 1\n2 - use texture palette 2")]
 	public int useTexture = 1;
 	public Texture2D paletteTex;
 	public Color coolColor;
