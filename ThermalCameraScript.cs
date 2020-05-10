@@ -12,12 +12,13 @@ public class ThermalCameraScript : MonoBehaviour {
 	public Shader TVPostProcessing;
 	[Tooltip("ThermalVisionSurfaceReplacement.shader")]
 	public Shader TVSurfaceReplacement; // cool replacement material
+	[Tooltip("ThermalVisionPalettes.png")]
+	public Texture2D paletteTex;
 
 	[Header("Palette")]
 
 	[Tooltip("0 - don't use texture (use 3 colors instead, as specified below)\n1 - use texture palette 1\n2 - use texture palette 2")]
 	public int useTexture = 1;
-	public Texture2D paletteTex;
 	public Color coolColor;
 	public Color midColor;
 	public Color warmColor;

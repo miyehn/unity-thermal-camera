@@ -14,4 +14,4 @@ Add `ThermalCameraScript` to your camera and hook up the resource references (mo
 
 For any heat emissive object, add `TemperatureController` to it and set its temperature (manually or with script) (Again mouse over the property for details).
 
-When the game is running, press space to toggle between normal view and thermal vision.
+When the game is running, press space to toggle between normal view and thermal vision. Or edit `Update()` in ThermalCameraScript.cs to set up your own toggle.
