@@ -35,7 +35,7 @@
 		half4 LightingThermalVisionReplacement(SurfaceOutput o, half3 lightDir, half atten)
 		{
 			half NdotL = dot(o.Normal, lightDir);
-			half3 res = o.Albedo * _LightColor0.rgb * saturate(NdotL) * atten;
+			half3 res = o.Albedo * _LightColor0.rgb * saturate(NdotL);
 			return half4(res, 1);
 		}
 
